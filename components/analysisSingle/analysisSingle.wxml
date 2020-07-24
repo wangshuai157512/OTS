@@ -1,0 +1,62 @@
+<view class="choice-content">
+    <view class="choice-item choice-item_default" data-index="{{index}}"
+          wx:for="{{optionList}}" wx:key="id">
+        <view class="choice-item__order">
+            <view wx:if="{{item.state === 1}}"> <image src="../../static/img/choiceright.png" alt=""></image> </view>
+            <view wx:elif="{{item.state === 2}}"> <image src="../../static/img/choicewrong.png" alt=""></image></view>
+           <view wx:else> {{item.order}}</view>
+        </view>
+        <text class="choice-item__text">{{item.content}}</text>
+    </view>
+</view>
+
+<view class="analysis-content">
+    <view class="box"></view>   
+    <view class="analysis-content-nav">
+        <view class="" wx:if="{{answerCorrect}}" style="color:#0AC092;">回答正确</view>
+        <view class="" wx:else>回答错误</view>
+        <!-- <view class="analysis-content-nav-right">
+            试题报错
+        </view> -->
+    </view>
+    <view class="analysis-content-question">
+        <view class="">
+            答案
+        </view>
+        <view class="analysis-content-question-all">
+            <text class="">正确答案：</text>
+            <text class="">{{defaultState}}</text>
+            <text class="analysis-content-question-r {{defaultValue === studentValue? '' : 'analysis-content-question-err'}}">你的答案：</text>
+            <text class="{{defaultValue === studentValue? '' : 'analysis-content-question-err'}}" wx:if="{{studentValue}}">{{studentState}}</text>
+            <text class="{{defaultValue === studentValue? '' : 'analysis-content-question-err'}}" wx:else>未作答</text>
+        </view>
+    </view>  
+    <view class="analysis-content-question">
+        <view class="" >
+            解析
+        </view>
+        <view class="analysis-content-question-content" >
+            <wxparser class="parserA"
+            rich-text="{{analysis}}"
+            />
+            <!-- <rich-text nodes="{{analysis}}"></rich-text> -->
+            <!-- {{analysis}} -->
+        </view>
+    </view>    
+    <view class="analysis-content-question">
+        <view class="" >
+            试题难度
+        </view>
+        <view class="analysis-content-question-content" >
+            {{difficulty}}
+        </view>
+    </view>    
+    <view class="analysis-content-question">
+        <view class="" >
+            知识点
+        </view>
+        <view class="analysis-content-question-content" >
+            {{category}}
+        </view>
+    </view>    
+</view>

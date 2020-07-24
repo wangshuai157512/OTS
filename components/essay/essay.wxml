@@ -1,0 +1,31 @@
+<view class="essay">
+    <view class="essay-area-content">
+        <editor wx:if="{{canIUse}}" placeholder="请输入答案" read-only="{{isRead}}" id="editor" bindinput="onChange" bindready="setContent"></editor>
+        <view wx:else class="tip">当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。</view>
+        <!--<textarea-->
+                <!--class="input__"-->
+                <!--placeholder="请输入答案"-->
+                <!--maxlength="-1"-->
+                <!--placeholder-style="font-size:28rpx;color:#BBC5CD;"-->
+        <!--/>-->
+        <view class="upload-content" wx:if="{{canIUse}}">
+            <view class="upload-img-view" bindtap="uploadImg" wx:if="{{imgList && imgList.length < 1}}">
+                <image src="../../static/img/photo-icon.png"></image>
+                <text>拍照上传</text>
+            </view>
+            <view wx:else class="upload-img-list">
+                <view class="upload-img-item" wx:for="{{imgList}}" wx:key="index">
+                    <view class="upload-img">
+                        <image src="{{item}}"></image>
+                    </view>
+                    <view class="delete-img" bindtap="delImg" data-index="{{index}}">
+                        <image src="../../static/img/delete-img.png"></image>
+                    </view>
+                </view>
+                <view class="upload-img__" bindtap="uploadImg">
+                    <image src="../../static/img/add.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

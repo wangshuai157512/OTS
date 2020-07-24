@@ -1,0 +1,10 @@
+<view class="choice-content">
+  <view class="choice-item choice-item_{{item.state}}" data-index="{{index}}"
+        wx:for="{{optionList}}" wx:key="id" bindtap="onChosen">
+    <view class="order-box">
+      <view class="choice-item__order">{{item.order}}</view>
+    </view>
+    <wxparser rich-text="{{item.content}}" style=" flex: 1px;font-size: 30rpx;color: #272E40;line-height: 1.3;"></wxparser>
+    <!--<text class="choice-item__text">{{item.content}}</text>-->
+  </view>
+</view>

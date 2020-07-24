@@ -1,0 +1,15 @@
+{
+  "usingComponents": {
+    "question-foot" : "../../components/questionFoot/questionFoot",
+    "question-title" : "../../components/questionTitle/questionTitle",
+    "choice-single" : "../../components/choiceSingle/choiceSingle",
+    "choice-multiple" : "../../components/choiceMultiple/choiceMultiple",
+    "judge" : "../../components/judgement/judgement",
+    "blank-filling" : "../../components/BlankFilling/BlankFilling",
+    "essay" : "../../components/essay/essay",
+    "recording" : "../../components/recording/recording",
+    "answer-card" : "../../components/answerCard/answerCard",
+    "judgement-correction" : "../../components/judgementCorrection/judgementCorrection"
+  },
+  "navigationBarTitleText" : "考试"
+}

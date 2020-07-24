@@ -1,0 +1,61 @@
+<view class="examination-score-box">
+    <view class="exm-content">
+        <scroll-view scroll-y="true" style="height: 100%">
+            <view class="exm-score-content">
+                <view class="score">
+                    <text class="score-text">{{currentPaperScore}}</text>
+                    <text class="score-fen">分</text>
+                </view>
+                <view class="score-bgc">
+                    <image src="../../static/img/score-bgc.jpg"></image>
+                </view>
+            </view>
+            <view class="report-detail">
+                <view class='module'>
+                    <image class='icon'src='../../static/img/use-time-icon.png'></image>
+                    <view class='name'>考试用时</view>
+                    <view class='content'>{{useTime}}分钟</view>
+                    <view></view>
+                </view>
+                <view class='module'>
+                    <image class='icon' src='../../static/img/paper-score-icon.png'></image>
+                    <view class='name'>试卷总分</view>
+                    <view class='content'>{{totalScore}}分</view>
+                    <view></view>
+                </view>
+                <view class='module'>
+                    <image src='../../static/img/cuowu-count-icon.png' class='icon'></image>
+                    <view class='name'>答错</view>
+                    <view class='content'>{{wrongNum}}道</view>
+                    <view></view>
+                </view>
+                <view class='module'>
+                    <image src='../../static/img/no-answer-icon.png' class='icon'></image>
+                    <view class='name'>未作答</view>
+                    <view class='content'>{{notAnswerNum}}道</view>
+                </view>
+            </view>
+            <view class="question-list">
+                <view class="question-type-item" wx:for="{{analysisList}}" wx:key="id">
+                    <view class="question-type-name">{{item.name}}</view>
+                    <view class="question-item-content">
+                        <view
+                                class="question-item-wrap"
+                                wx:for="{{item.questions}}"
+                                wx:key="id"
+                                wx:for-item="questionItem"
+                                data-currentpage="{{questionItem.currentPage}}"
+                                bindtap="lookAnalysis"
+                        >
+                            <view class="question-item__ {{questionItem.answerCardState}}">{{index + 1}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="exm-footer">
+        <view class="exm-btn look-analysis" bindtap="lookAnalysis">查看解析</view>
+        <view class="exm-btn try-it-once" bindtap="tryItOnce">再试一次</view>
+    </view>
+</view>

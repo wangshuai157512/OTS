@@ -1,0 +1,28 @@
+
+<view wx:if="{{canIUse}}" class="page">
+    <image class="topbg" src="../../static/img/login_bg.png" alt=""></image>
+    <view class="main">
+        <view class="title">
+            绑定微信
+        </view>
+        <view class="content">
+            <view class="tipText" hover-class="none" hover-stop-propagation="false">
+                当前应用是为指定范围用户开放的在线答题平台，在使用过程中可能会获得您的公开信息,如昵称,头像,手机等。
+            </view>
+            <!-- <view class="tipText">
+                阅读并同意以上权限
+            </view> -->
+            <!-- <radio class="uncheck" value="" disabled="false" checked="false" color="">
+                <text class="">
+                    阅读并同意以上权
+                </text> 限
+            </radio> -->
+        </view>
+        <!-- <button wx:if="{{!showLogin}}" class="btn_login gray" style="width:85%;" bindtap="checkLoginFn">授权登录</button> -->
+        <view class="btnArea">
+            <button wx:if="{{showLogin}}" class="btn_login" style="width:85%;" open-type='getUserInfo' bindgetuserinfo='getUserInfo'>授权登录</button>
+        </view>
+    </view>
+</view>
+<view wx:else>请升级微信版本</view>
+

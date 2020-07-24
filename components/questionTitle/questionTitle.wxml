@@ -1,0 +1,40 @@
+<view class="question-title">
+    <view style="display: flex;flex-wrap: wrap;word-break: break-all">
+        <wxparser
+                rich-text="{{title}}" class="{{analysisState?'':'ft'}}"
+                style="color:#272E40;font-size: 34rpx;font-family: PingFangSC-Medium,PingFang SC;"
+        />
+        <text wx:if="{{isShowScore && score != 0}}" style="color:#272E40;font-size: 34rpx;font-family: PingFangSC-Medium,PingFang SC;">({{score}}分)</text>
+    </view>
+    <view class="audio-content" wx:if="{{src}}">
+        <view class="audio-progress">
+            <slider
+                    backgroundColor="#E7ECF1"
+                    activeColor="#1966FF"
+                    block-color="#1966FF"
+                    block-size="12"
+                    disabled="false"
+                    max="{{duration}}"
+                    step="1"
+                    value="{{currentTime}}"
+            ></slider>
+            <text class="audio-time">{{showTime}}</text>
+        </view>
+        <view class="audio-control-content">
+            <view class="retreat-img" bindtap="seek" data-seektype="1">
+                <image src="../../static/img/retreat.png" class="control-img__"></image>
+            </view>
+            <view class="control-img">
+                <view class="stop" bindtap="pause" wx:if="{{isPlay}}">
+                    <image src="../../static/img/stop.png" class="control-img__"></image>
+                </view>
+                <view class="play" wx:else bindtap="play">
+                    <image src="../../static/img/play-icon.png" class="control-img__"></image>
+                </view>
+            </view>
+            <view class="forward-img" bindtap="seek" data-seektype="2">
+                <image src="../../static/img/forward.png" class="control-img__"></image>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,13 @@
+<view class="container">
+     <image class="bg" src="../../static/img/login_bg.png"></image>
+    <view class="myInfo">
+        <view style="text-align:center"> 
+        <image class="headPic" background-size="cover" src="{{headUrl}}"></image>
+        </view>
+        <view class='stuInfo'>
+            <view class="stuName c-272"><text class="infotitle c-929">考生姓名：</text>{{userName}}</view>
+            <view class="stucardId c-272"><text class="infotitle c-929">身份证号：</text>{{certificateCode}}</view>
+        </view>
+        <button class="out" bindtap="outFn">退出</button>
+    </view>
+</view>

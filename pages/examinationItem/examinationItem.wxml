@@ -1,0 +1,297 @@
+<view class="examination-item-box">
+    <view class="examination-item-content">
+    <camera wx:if="{{query.isFace}}"  device-position="front" bindinitdone="bindinitdone" flash="off" bindstop='bindstop' binderror='binderror' style="width: 150px; height: 200px;position: fixed;left: 10000px;top: 0;">
+        <cover-view class='border_writh'></cover-view>
+    </camera>
+        <view class="question-view" wx:if="{{questionPack && questionPack.length > 0}}">
+
+            <swiper class="question-swiper" duration="200" current="{{currentPage}}" bindchange="onChange">
+                <block wx:for="{{questionPack}}" wx:for-item="packItem" wx:for-index="packIndex" wx:key="id">
+                    <!--答题引导页-->
+                    <swiper-item>
+                        <view class="question-guide-view">
+                            <view class="question-type-text f-pingfang-j-zh c-272">{{packItem.name}}</view>
+                            <view class="question-score-text c-738">本小题共{{packItem.totalquestion}}小题，每小题{{packItem.realEachScore}}分，共{{packItem.totalscore}}分。</view>
+                            <view class="question-guide-gesture">
+                                <view class="question-guide-gesture-arrow">
+                                    <image src="../../static/img/shoushi.png" class="shoushi"></image>
+                                </view>
+                                <view class="question-guide-gesture-img">
+                                    <image src="../../static/img/shouzhi.png" class="finger"></image>
+                                </view>
+                                <view class="slide-answer-text c-929">向左滑动，开始答题</view>
+                            </view>
+                        </view>
+                    </swiper-item>
+                    <!--试题-->
+                    <block wx:for="{{packItem.paperQuestionList}}" wx:key="questionId">
+                        <block wx:if="{{item.answerMode !== 'Composite'}}">
+                            <swiper-item item-id="{{packIndex+'-'+index}}">
+                                <scroll-view scroll-y="true" class="question-scroll-view" wx:if="{{currentPage <= item.currentPage+1 && currentPage >= item.currentPage-1}}">
+
+                                    <view class="question-header-box">
+
+                                        <view class="question-header-content">
+
+                                            <view class="question-type-title c-475 f-pingfang-j-cg">{{item.questiontypename}}</view>
+                                            <view class="question-type-total-content">
+                                                <text class="question-type-select-num c-198">{{index+1}}</text>
+                                                <text class="question-type-total-num c-bbc">/{{packItem.paperQuestionList.length}}</text>
+                                            </view>
+                                        </view>
+                                    </view>
+                                    <view class="question-title-box">
+                                        <view class="question-title-content">
+                                            <question-title
+                                                    question-id="{{item.questionId}}"
+                                                    title="{{item.stem}}"
+                                                    src="{{item.audioSrc}}"
+                                                    isShowScore="{{true}}"
+                                                    score="{{item.score}}"
+                                            />
+                                        </view>
+                                    </view>
+                                    <view class="question-content">
+                                        <!--单选-->
+                                        <view class="choice-single-content" wx:if="{{item.answerMode === 'SingleSelection'}}">
+                                            <choice-single
+                                                    options="{{item.answerArea.optionList}}"
+                                                    pack-index="{{packIndex}}"
+                                                    question-index="{{index}}"
+                                                    default-value="{{item.optionID}}"
+                                                    bindchosen="onSingleChosen"
+                                            />
+                                        </view>
+                                        <!--多选-->
+                                        <view class="choice-multiple-content" wx:if="{{item.answerMode === 'MultiSelection'}}">
+                                            <choice-multiple
+                                                    options="{{item.answerArea.optionList}}"
+                                                    pack-index="{{packIndex}}"
+                                                    question-index="{{index}}"
+                                                    default-value="{{item.optionIDs}}"
+                                                    bindchosen="onMultipleChosen"
+                                            />
+                                        </view>
+                                        <!--判断-->
+                                        <view class="judge-content" wx:if="{{item.answerMode === 'Judgement'}}">
+                                            <judge
+                                                    options="{{item.answerArea.optionList}}"
+                                                    pack-index="{{packIndex}}"
+                                                    question-index="{{index}}"
+                                                    default-value="{{item.optionID}}"
+                                                    bindchosen="onSingleChosen"
+                                            />
+                                        </view>
+                                        <!--填空-->
+                                        <view class="blank-filling-content" wx:if="{{item.answerMode === 'BlankFilling'}}">
+                                            <blank-filling
+                                                    wx:if="{{!isShowAnswerCard}}"
+                                                    area-list="{{item.answerArea.inputAreaList}}"
+                                                    pack-index="{{packIndex}}"
+                                                    question-index="{{index}}"
+                                                    default-value="{{item.optionIDs}}"
+                                                    bindchosen="onBlankFillingChosen"
+                                            />
+                                        </view>
+                                        <!--主观-->
+                                        <view class="essay-content" wx:if="{{item.answerMode === 'EssayQuestion'}}">
+                                            <essay
+                                                    pack-index="{{packIndex}}"
+                                                    question-index="{{index}}"
+                                                    default-value="{{item.optionID}}"
+                                                    bindchosen="onEssayChosen"
+                                            />
+                                        </view>
+                                        <!--录音-->
+                                        <!--<view class="recording-content" wx:if="{{item.answerMode === 'luyinQuestion'}}">-->
+                                            <!--<recording-->
+                                                    <!--pack-index="{{packIndex}}"-->
+                                                    <!--question-index="{{index}}"-->
+                                            <!--/>-->
+                                        <!--</view>-->
+                                        <!--判断改错-->
+                                        <view class="judge-content" wx:if="{{item.answerMode === 'JudgementCorrectsMistakes'}}">
+                                            <judgement-correction
+                                                    options="{{item.answerArea.optionList}}"
+                                                    pack-index="{{packIndex}}"
+                                                    question-index="{{index}}"
+                                                    default-value="{{item.optionID}}"
+                                                    bindchosen="onJudgeCorrectionChosen"
+                                            />
+                                        </view>
+                                    </view>
+                                </scroll-view>
+                            </swiper-item>
+                        </block>
+                        <block wx:else>
+                            <swiper-item item-id="{{packIndex+'-'+index}}">
+                                <view class="composite-question-title" style="height: {{viewHeight}}">
+                                    <scroll-view scroll-y="{{isResizing}}" style="height: 100%">
+                                        <view class="question-header-box">
+                                            <view class="question-header-content">
+                                                <view class="question-type-total-content">
+                                                    <text class="question-type-select-num c-198">{{index+1}}</text>
+                                                    <text class="question-type-total-num c-bbc">/{{packItem.paperQuestionList.length}}</text>
+                                                </view>
+                                            </view>
+                                        </view>
+                                        <view class="question-title-wrap">
+                                            <question-title
+                                                    title="{{item.stem}}"
+                                                    analysisState="{{analysisState}}"
+                                            />
+                                        </view>
+                                    </scroll-view>
+                                </view>
+                                <swiper class="subquestion-swiper" style="height: {{contentHeight}}" duration="200" current="{{childCurrentPage}}" bindchange="onChangeChild" bindanimationfinish="swiperFinish" bindtouchstart="handleStart" bindtouchend ="handleEnd">
+                                    <swiper-item wx:for="{{item.subqustionList}}" class="composite-scroll-view"  wx:for-item="subItem" wx:for-index="subIndex" wx:key="questionId">
+                                        <view class="resizing-box" catchtouchmove="resizing" bindtouchend="endResize" bindtouchstart="startResize">
+                                            <view class="resizing-btn"></view>
+                                        </view>
+                                        <scroll-view class="scroll-view-sty" scroll-y="{{isResizing}}" wx:if="{{currentPage === item.currentPage}}">
+                                            <view class="question-header-box">
+                                                <view class="question-header-content composite-header-box">
+                                                    <view class="question-type-title c-475 f-pingfang-j-cg">{{subItem.questiontypename}}</view>
+                                                    <view class="question-type-total-content">
+                                                        <text class="question-type-select-num c-198">{{subIndex+1}}</text>
+                                                        <text class="question-type-total-num c-bbc">/{{item.subqustionList.length}}</text>
+                                                    </view>
+                                                </view>
+                                            </view>
+                                            <view class="options-content">
+                                                <view class="question-title__">
+                                                    <question-title
+                                                        question-id="{{subItem.questionId}}"
+                                                        title="{{subItem.stem}}"
+                                                        src="{{subItem.audioSrc}}"
+                                                        is-show-score="{{true}}"
+                                                        score="{{subItem.score}}"
+                                                    />
+                                                </view>
+                                                <!--单选-->
+                                                <view class="composite-options" wx:if="{{subItem.answerMode === 'SingleSelection'}}">
+                                                    <choice-single
+                                                            options="{{subItem.answerArea.optionList}}"
+                                                            pack-index="{{packIndex}}"
+                                                            question-index="{{index}}"
+                                                            default-value="{{subItem.optionID}}"
+                                                            sub-question-index="{{subIndex}}"
+                                                            bindchosen="onSubSingleChosen"
+                                                    />
+                                                </view>
+                                                <!--多选-->
+                                                <view class="composite-options" wx:if="{{subItem.answerMode === 'MultiSelection'}}">
+                                                    <choice-multiple
+                                                            options="{{subItem.answerArea.optionList}}"
+                                                            pack-index="{{packIndex}}"
+                                                            question-index="{{index}}"
+                                                            sub-question-index="{{subIndex}}"
+                                                            default-value="{{subItem.optionIDs}}"
+                                                            bindchosen="onSubMultipleChosen"
+                                                    />
+                                                </view>
+                                                <!--填空-->
+                                                <view class="composite-options" wx:if="{{subItem.answerMode === 'BlankFilling'}}">
+                                                    <blank-filling
+                                                            wx:if="{{!isShowAnswerCard}}"
+                                                            area-list="{{subItem.answerArea.inputAreaList}}"
+                                                            pack-index="{{packIndex}}"
+                                                            question-index="{{index}}"
+                                                            sub-question-index="{{subIndex}}"
+                                                            default-value="{{subItem.optionIDs}}"
+                                                            bindchosen="onSubBlankFillingChosen"
+                                                    />
+                                                </view>
+                                                <!--判断-->
+                                                <view class="composite-options" wx:if="{{subItem.answerMode === 'Judgement'}}">
+                                                    <judge
+                                                            options="{{subItem.answerArea.optionList}}"
+                                                            pack-index="{{packIndex}}"
+                                                            question-index="{{index}}"
+                                                            sub-question-index="{{subIndex}}"
+                                                            default-value="{{subItem.optionID}}"
+                                                            bindchosen="onSubSingleChosen"
+                                                    />
+                                                </view>
+                                                <!--主观题-->
+                                                <view class="composite-options" wx:if="{{subItem.answerMode === 'EssayQuestion'}}">
+                                                    <essay
+                                                            pack-index="{{packIndex}}"
+                                                            question-index="{{index}}"
+                                                            sub-question-index="{{subIndex}}"
+                                                            default-value="{{subItem.optionID}}"
+                                                            bindchosen="onSubEssayChosen"
+                                                    />
+                                                </view>
+                                                <!--判断改错-->
+                                                <view class="composite-options" wx:if="{{subItem.answerMode === 'JudgementCorrectsMistakes'}}">
+                                                    <judgement-correction
+                                                            options="{{subItem.answerArea.optionList}}"
+                                                            pack-index="{{packIndex}}"
+                                                            sub-question-index="{{subIndex}}"
+                                                            question-index="{{index}}"
+                                                            default-value="{{subItem.optionID}}"
+                                                            bindchosen="onSubJudgeCorrectionChosen"
+                                                    />
+                                                </view>
+                                            </view>
+                                        </scroll-view>
+                                    </swiper-item>
+                                </swiper>
+                            </swiper-item>
+                        </block>
+                    </block>
+                </block>
+                <swiper-item item-id="last-swiper-item">
+                    <view class="last-content">
+                        <view class="last-img-content">
+                            <image src="../../static/img/last-bgc.png"></image>
+                        </view>
+                        <view class="question-state-text">共{{totalNum}}道题，还有{{noAnswerNum}}道未作答</view>
+                        <view class="button-wrap">
+                            <view class="look-answer-card btn" bindtap="showAnswerCard">查看答题卡</view>
+                            <view class="submit-paper btn" bindtap="isCheckAllAnswers">交卷</view>
+                        </view>
+                    </view>
+
+                </swiper-item>
+            </swiper>
+            <question-foot
+                wx:if="{{questionPack && questionPack.length > 0}}"
+                id="question-foot"
+                paper-time="{{paperTime}}"
+                use-time="{{useTime}}"
+                time-limit-enabled="{{timeLimitEnabled}}"
+                bindnextQuestion="nextQuestion"
+                bindprevQuestion="prevQuestion"
+                bindshowAnswerCard="showAnswerCard"
+                bindsubmitPaper="isCheckFace"
+                autoPhotoTimes="{{query.autoPhotoTimes}}"
+                minimum-commit-time="{{minimumCommitTime}}"
+                takePhotoInMinimumCommitTime="{{takePhotoInMinimumCommitTime}}"
+                photoInPocessTest="{{photoInPocessTest}}"
+                bindsavePaper="savePaper"
+            />
+        </view>
+        <view class="answer-box">
+            <answer-card
+                    question-list="{{questionPack}}"
+                    is-show="{{isShowAnswerCard}}"
+                    bindhideAnswerCard="hideAnswerCard"
+                    bindgoCurrentPage="goCurrentPage"
+                    bindsubmitPaper="isCheckAllAnswers"
+            />
+        </view>
+        <view class="check-answer-model" wx:if="{{isShowModel}}" catchtouchmove="{{isShowModel}}">
+            <view class="model">
+                <view class="medel-header">
+                    <view class="model-title">您还有未完成的题目，是否确认提交？</view>
+                </view>
+                <view class="model-btn-content">
+                    <view class="check-btn model-btn" bindtap="checkEvent">再检查一下</view>
+                    <view class="submit-btn model-btn" data-flag="{{false}}" bindtap="isCheckFace">确定提交</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/loginhome/loginhome",
+    "pages/index/index",
+    "pages/analysisItem/analysisItem",
+    "pages/examinationItem/examinationItem",
+    "pages/examinationRecord/examinationRecord",
+    "pages/loginsuccess/loginsuccess",
+    "pages/my/my",
+    "pages/idInformation/idInformation",
+    "pages/examList/examList",
+    "pages/examinationScore/examinationScore",
+    "pages/faceDistinguish/faceDistinguish",
+    "pages/examinationInfo/examinationInfo",
+    "pages/examHistory/examHistory"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1756FF",
+    "navigationBarTextStyle": "white"
+  },
+  "plugins": {
+    "wxparserPlugin": {
+      "version": "0.3.0",
+      "provider": "wx9d4d4ffa781ff3ac"
+    }
+  },
+  "tabBar": {
+    "color": "#9CA5AD",
+    "selectedColor": "#1966FF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的考试",
+        "iconPath": "./static/img/tabbar-1-n.png",
+        "selectedIconPath": "./static/img/tabbar-1-s.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "./static/img/tabbar-3-n.png",
+        "selectedIconPath": "./static/img/tabbar-3-s.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

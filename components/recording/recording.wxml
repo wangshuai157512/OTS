@@ -1,0 +1,51 @@
+<view class="recording">
+    <view class="my-recording-content" wx:if="{{recordingFile}}">
+        <view class="recording-box">
+            <view class="recording-length"
+                  bindlongpress="delRecord"
+                  bindtap="playRecord"
+            >
+                <view class="recording-length-content">
+                    <text class="recording-length-text">{{recordingFile.time}}''</text>
+                    <view class="length-effect">
+                        <view class="short__"></view>
+                        <view class="in__"></view>
+                        <view class="long__"></view>
+                        <view class="in__"></view>
+                        <view class="short__"></view>
+                    </view>
+                </view>
+            </view>
+            <view class="answer-font">
+                <image src="../../static/img/answer-font.png"></image>
+            </view>
+        </view>
+        <view class="delete-recording-text">长按可删除该录音</view>
+    </view>
+    <view wx:else class="longtap-speak-content">
+        <view class="cancel-mask-content" wx:if="{{isSpeak}}">
+            <view class="cancel-effect-content">
+                <view class="in__"></view>
+                <view class="long__"></view>
+                <view class="short__"></view>
+                <view class="center__"></view>
+                <view class="short__"></view>
+                <view class="long__"></view>
+                <view class="in__"></view>
+            </view>
+            <view class="move-cancel-recording-text">上滑可取消录音</view>
+        </view>
+        <view class="longtap-speak-box">
+            <view class="speak-content">
+                <view
+                    class="speak-img-content {{isSpeak?'speak':'default'}}"
+                    bindlongpress="handleLongPress"
+                    bindtouchend="handleTouchEnd"
+                    bindtouchmove="handleMove"
+                >
+                </view>
+            </view>
+            <view class="longtap-speak-text">{{isSpeak?'松开结束':'按住说话'}}</view>
+        </view>
+    </view>
+</view>

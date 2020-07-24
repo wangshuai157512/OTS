@@ -1,0 +1,19 @@
+<view class="answer-card__ {{isShow ? '':'answer-sheet_hidden'}}">
+    <view class="answer-card-content-view">
+        <scroll-view  scroll-y="true" style="height: 100%">
+            <view class="section" wx:for="{{optionList}}" wx:for-item="packItem" wx:key="id">
+                <view class="name">{{packItem.name}}</view>
+                <view class="rows">
+                    <view class="row-wrap" wx:for="{{packItem.questions}}" wx:key="questionId">
+                        <!-- <view class="row {{!item.isAnswer ? 'default' : 'right'}}" bindtap="goCurrentQuestion" data-currentPage="{{item.currentPage}}">{{index + 1}}</view> -->
+                        <view class="row {{item.answerCardState}}" bindtap="goCurrentQuestion" data-currentPage="{{item.currentPage}}">{{index + 1}}</view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <!-- <view class="answer-button-wrap">
+        <view class="continue-answer answer-button" bindtap="hideAnswerCard">查看错误解析</view>
+        <view class="submit-paper answer-button" bindtap="submitPaper">查看全部解析</view>
+    </view> -->
+</view>

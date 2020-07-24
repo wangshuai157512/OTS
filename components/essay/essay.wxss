@@ -1,0 +1,81 @@
+editor {
+    height: 100%!important;
+    min-height: 100%!important;
+    color: #738699;
+    font-size: 30rpx;
+}
+.essay-area-content {
+    height: 260rpx;
+    background:rgba(247,249,252,1);
+    border-radius:16rpx;
+    box-sizing: border-box;
+    padding: 24rpx 20rpx;
+}
+.essay-area-content .input__ {
+    height: 100%;
+    color: #738699;
+    font-size: 30rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+}
+
+.upload-content {
+    margin-top: 44rpx;
+}
+.upload-img-view {
+    display: flex;
+    align-items: center;
+}
+.upload-img-view image {
+    width: 48rpx;
+    height: 48rpx;
+}
+.upload-img-view text {
+    color: #1966FF;
+    font-size: 24rpx;
+    margin-left: 10rpx;
+}
+
+.upload-img-list {
+    display: flex;
+}
+
+.upload-img-item {
+    position: relative;
+    border-radius: 16rpx;
+    margin-right: 20rpx;
+}
+
+.upload-img image {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 16rpx;
+}
+.delete-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.delete-img image {
+    width: 36rpx;
+    height: 36rpx;
+}
+
+.upload-img__ {
+    width: 120rpx;
+    height: 120rpx;
+    border: 1px dashed #BBC5CD;
+    background:rgba(247,249,252,1);
+    border-radius: 16rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.upload-img__ image {
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.tip {
+    font-size: 30rpx;
+    color: #666;
+}

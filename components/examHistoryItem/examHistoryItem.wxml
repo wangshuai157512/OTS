@@ -1,0 +1,27 @@
+<view class="exmHistory">
+  <view class="exam_title .c-272">{{item.name}}</view>
+  <view class="c-929 exam_info exam_time">开始时间：<text class="c-475">{{item.startTime }}</text> </view>
+  <view class="c-929 exam_info exam_time">截止时间：<text class="c-475">{{item.endTime}} </text> </view>
+  <view class="exam_info">
+    <view class="c-929" style="display:inline-block;margin-right:36rpx">考试时长：<text class="c-475">{{item.paperTime}}分钟</text> </view> 
+    <view class="c-929" style="display:inline-block"> 已做次数：<text class="c-475"><text class='c-198'>{{item.data.length}}</text>/ {{item.answerTime==0 ? "不限制" : item.answerTime}}</text> </view> 
+  </view>
+  <view class="exam_score">
+    <view class="c-929 score fLeft" style="white-space:pre-wrap" wx:if="{{item.finalScore}}">成      绩：<text class="{{item.finalScore>59? 'c-0ac':'c-ff5'}}">{{item.finalScore}}</text> </view>
+    <view class="controlBtn fRight {{item.finalScore?'':'bottomH'}} {{idFlag == index?'up':'down'}}" data-ind="{{index}}"  bindtap="viewScoreHistory" wx:if="{{item.data.length>0}}" >
+      <image src="{{idFlag == index?'/static/img/icon-up.png':'/static/img/icon-down.png'}}"></image>  
+    </view>
+  </view>
+</view>
+
+<view class="score_history {{index}}  {{idFlag == index ? 'isShow':'isHide'}} "  style="padding-left:30rpx">
+  <view class="c-929 history_item" wx:for="{{item.data}}"   wx:for-index="i" wx:for-item="e">
+    <view class="fLeft" style="line-height:88rpx">
+    第{{item.data.length-i}}次成绩：<text class="{{e.score>59? 'c-0ac':'c-ff5'}}">{{e.score}}</text> 
+    </view>  
+    <button class="c-198 viewScoreBtn fRight" data-id="{{e.recordId}}" bindtap="viewScoreDetail">查看</button>
+  </view>         
+</view>
+
+
+  

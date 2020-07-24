@@ -1,0 +1,72 @@
+<!--pages/login/loginhome.wxml-->
+<!-- <text>pages/login/loginhome.wxml</text>-->
+<view class="page">
+  <image class="topbg" src="../../static/img/login_bg.png"></image>
+  <view class="main">
+    <view class="main_icon">
+      <image src="../../static/img/logo.png"></image>
+    </view>
+    <!--<view style="width: 85%;margin: 0 auto;text-align: center;font-size: 24rpx;color: #999;">当前程序是为指定范围用户在线考试平台，登录过程中可能需要授权您的手机号和信息做绑定认证</view>-->
+    <view class="main_con">
+      <view class="user_login">
+        <view wx:if="{{showSchool}}" class="inputBox jigou" bindtap="pickShowORHide">
+          <image class="left" src="../../static/img/school-n.png"></image>
+          <input  type="text"
+                  disabled='true'
+                  value="{{tenantName}}"
+                  placeholder="请选择机构"></input>
+          <image class="right" src="../../static/img/down-n.png" style="width:14pt;height:7pt;"></image>
+        </view>
+        <view class="inputBox username">
+          <image class="left" src="../../static/img/user-n.png"></image>
+          <input type="text" bindblur="getUserName" value="{{userName}}" placeholder="请输入用户名"></input>
+          <image class="right" src="../../static/img/cancel.png" bindtap="clearFn"></image>
+        </view>
+        <view class="inputBox password">
+          <image class="left" src="../../static/img/password-n.png"></image>
+          <input password="{{!showPassword}}" bindblur="getPassword" placeholder="请输入密码"></input>
+          <image class="right" wx:if="{{!showPassword}}" src="../../static/img/nosee-n.png" bindtap="showPasswordFn"></image>
+          <image class="right" wx:if="{{showPassword}}" src="../../static/img/see.png" bindtap="showPasswordFn"></image>
+        </view>
+        <view class="inputBox checkCode" wx:if="{{showCheckCode}}">
+          <image class="left"  src=""></image>
+          <input type="text" bindblur="getCheckCode" placeholder="请输入验证码"></input>
+          <image class="right" style="width:60px;height:30px" src="{{checkNode}}" bindtap="roadCheckCode"></image>
+        </view>
+        <!-- <view class="inputBox password">
+          <button class='pop_btn' plain="true" open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">获取用户手机号</button>
+        </view> -->
+        <!-- <input class="inputBox" placeholder="请选择机构"></input>
+        <input class="inputBox" placeholder="请输入用户名"></input>
+        <input class="inputBox" placeholder="请输入密码"></input> -->
+        <!-- <view class="btn_login" bindtap="loginSubmit">登录</view> -->
+        <!-- <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo" class="btn_login">登录</button> -->
+        <button wx:if="{{!showLogin}}" class="btn_login gray" style="width:85%;" bindtap="checkLoginFn">登录</button>
+        <button wx:if="{{showLogin}}" class="btn_login" style="width:85%;" open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">登录</button>
+
+      </view>
+      <view class="weix_login" wx:if="{{showWeiXinLogin}}">
+        <view class="weixin" bindtap="wexinloginFn">
+          <view class="icon"><image src="../../static/img/WeChat.png"></image></view>
+          <text>微信登录</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="picker" wx:if="{{showTenant}}">
+    <view class="btn-wrap">
+      <view class="btn_class">
+        <text class="cancel" bindtap="pickCancel">取消</text>
+        <view class="" bindtap="makeSureTenant">确定</view>
+      </view>
+    </view>
+    <view class="pic-wrap">
+      <picker-view indicator-style="height:50px;line-height:50px" value="{{value}}" bindchange="bindChange">
+        <picker-view-column>
+          <view wx:for="{{multiTenant}}" wx:key="index" value="{{item}}" style="height:50px;line-height:50px">{{item.name}}</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+  <view class="lightBox" wx:if="{{showTenant}}" bindtap="pickCancel"></view>
+</view>

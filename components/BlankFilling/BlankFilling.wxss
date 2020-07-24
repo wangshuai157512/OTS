@@ -1,0 +1,38 @@
+.input-area-item {
+    display: flex;
+    background:rgba(247,249,252,1);
+    border-radius: 10rpx;
+    box-sizing: border-box;
+    padding: 24rpx 30rpx;
+    margin-bottom: 20rpx;
+}
+
+.input-area-order {
+    width: 56rpx;
+    height: 56rpx;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1966FF;
+    background:rgba(231,236,241,1);
+    font-family:ArialMT;
+}
+
+.input-area {
+    flex: 1;
+    margin-left: 30rpx;
+    display: flex;
+    align-items: center;
+    color: #272E40;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-size:30rpx;
+}
+.input-area .input__{
+    width: 100%;
+    height: 56rpx;
+    font-size: 30rpx;
+    /*line-height: 100%;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+}

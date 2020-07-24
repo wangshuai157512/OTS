@@ -1,0 +1,71 @@
+page{
+  padding-top:30rpx
+}
+.itemTitle {
+  font-weight: bold;
+}
+.item {
+  width:686rpx;
+  height:180rpx;
+  margin:0 auto;
+  margin-bottom:24rpx;
+  border-radius:16rpx;
+  font-size: 40rpx;
+  padding:46rpx 50rpx 0 50rpx;
+  box-sizing: border-box;
+  background:url(https://otsstatic.chinaedu.net/otsstyle/mini/img/courseWork.png) 100% 100%;
+  background-size:cover;
+}
+
+.even{text-align: right;}
+.waitDo{
+  margin-top:16rpx;
+  font-size: 24rpx;
+}
+.waitNum{
+  color:#fff;
+  font-size:22rpx;
+  background-color: #4D86BF;
+  border-radius: 50rpx;
+  padding:2rpx 8rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+}
+.courseWork{
+  color:#4D86BF;
+  margin-top:40rpx;
+
+}
+.entranceExam{
+  color:#43BF96;
+  background:url(https://otsstatic.chinaedu.net/otsstyle/mini/img/entranceExam.png) 100% 100%;
+  background-size:cover;
+  text-align: right;
+}
+.entranceExam .waitNum{
+  background-color: #43BF96;
+}
+.bigWork{
+  color:#F27A24;
+  background:url(https://otsstatic.chinaedu.net/otsstyle/mini/img/bigWork.png) 100% 100%;
+  background-size:cover;
+}
+.bigWork .waitNum{
+  background-color: #F27A24;
+}
+.courseExam{
+  color:#6066A6;
+  background:url(https://otsstatic.chinaedu.net/otsstyle/mini/img/courseExam.png) 100% 100%;
+  background-size:cover;
+  text-align: right;
+}
+.courseExam .waitNum{
+  background-color: #6066A6;
+}
+.courseEnd{
+  color: #E65C5C;
+  background:url(https://otsstatic.chinaedu.net/otsstyle/mini/img/courseEnd.png) 100% 100%;
+  background-size:cover;
+}
+.courseEnd .waitNum{
+  background-color: #E65C5C;
+}

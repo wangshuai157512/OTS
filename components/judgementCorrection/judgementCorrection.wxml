@@ -1,0 +1,22 @@
+<view class="judge-correction">
+    <view class="judge-content">
+        <judge
+                options="{{options}}"
+                pack-index="{{packIndex}}"
+                question-index="{{questionIndex}}"
+                sub-question-index="{{subQuestionIndex}}"
+                default-value="{{defaultValue.id}}"
+                bindchosen="onJudgeChosen"
+        />
+        <view class="input-area" wx:if="{{isShowInput}}">
+            <input
+                    type="text"
+                    class="input__"
+                    bindinput="change"
+                    placeholder="请输入答案"
+                    value="{{defaultValue.content}}"
+                    placeholder-style="font-size:30rpx;color:#BBC5CD;"
+            />
+        </view>
+    </view>
+</view>

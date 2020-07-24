@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "historyExam": "../../components/examHistoryItem/examHistoryItem"
+  },
+  "navigationBarTitleText" : "查看详细记录"
+}

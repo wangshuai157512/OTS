@@ -1,0 +1,304 @@
+<view class="examination-item-box">
+    <view class="examination-item-content">
+        <view class="question-view">
+            <swiper class="question-swiper" duration="200" current="{{currentPage}}" bindchange="onChange">
+                <block wx:for="{{analysisContent}}" wx:for-item="packItem" wx:for-index="packIndex" wx:key="packIndex">
+                    <!--试题-->
+                    <block wx:for="{{packItem.questions}}" wx:key="questionId">
+                        <swiper-item item-id="{{packIndex+'-'+index}}" wx:if="{{item.answerMode !== 'Composite'}}">
+                            <scroll-view scroll-y="true" class="question-scroll-view" wx:if="{{currentPage <= item.currentPage+1 && currentPage >= item.currentPage-1}}">
+                                <view class="question-header-box">
+                                    <view class="question-header-content">
+                                        <view class="question-type-title c-475 f-pingfang-j-cg">{{item.questionTypeName}}</view>
+                                        <view class="question-type-total-content">
+                                            <text class="question-type-select-num c-198">{{index+1}}</text>
+                                            <text class="question-type-total-num c-bbc">/{{packItem.questions.length}}</text>
+                                        </view>
+                                    </view>
+                                </view>
+                                <view class="question-title-box">
+                                    <view class="question-title-content">
+                                        <question-title
+                                            question-id="{{item.id}}"
+                                            title="{{item.stem}}"
+                                            src="{{item.audioSrc}}"
+                                            audioState="{{audioState}}"
+                                        />
+                                    </view>
+                                </view>
+                                <view class="question-content">
+                                    <!--单选-->
+                                    <view class="choice-single-content" wx:if="{{item.answerMode === 'SingleSelection'}}">
+                                         <analysis-single
+                                                    analysis = "{{item.solvingProcess}}"
+                                                    difficulty = "{{item.difficultyDegree}}"
+                                                    category = "{{item.category.value}}"
+                                                    options="{{item.answerArea.optionList}}"
+                                                    pack-index="{{packIndex}}"
+                                                    question-index="{{index}}"
+                                                    default-value="{{item.answer.id}}"
+                                                    student-value="{{item.answerContent.id}}"
+                                                    answerStatus="{{item.answerStatus}}"
+                                                    answerCorrect="{{item.answerCorrect}}"
+                                        />
+                                    </view>
+                                    <!--多选-->
+                                    <view class="choice-multiple-content" wx:if="{{item.answerMode === 'MultiSelection'}}">
+                                        <analysis-multiple
+                                                    analysis = "{{item.solvingProcess}}"
+                                                    difficulty = "{{item.difficultyDegree}}"
+                                                    category = "{{item.category.value}}"
+                                                    options="{{item.answerArea.optionList}}"
+                                                    pack-index="{{packIndex}}"
+                                                    question-index="{{index}}"
+                                                    default-value="{{item.answer.idList}}"
+                                                    student-value="{{item.answerContent.idList}}"
+                                                    answerStatus="{{item.answerStatus}}"
+                                                    answerCorrect="{{item.answerCorrect}}"
+                                        />
+                                    </view>
+                                    <!--判断-->
+                                    <view class="judge-content" wx:if="{{item.answerMode === 'Judgement'}}">
+                                        <analysis-judge
+                                                    analysis = "{{item.solvingProcess}}"
+                                                    difficulty = "{{item.difficultyDegree}}"
+                                                    category = "{{item.category.value}}"
+                                                    options="{{item.answerArea.optionList}}"
+                                                    pack-index="{{packIndex}}"
+                                                    question-index="{{index}}"
+                                                    default-value="{{item.answer.id}}"
+                                                    student-value="{{item.answerContent.id}}"
+                                                    answerStatus="{{item.answerStatus}}"
+                                                    answerCorrect="{{item.answerCorrect}}"
+                                        />
+                                    </view>
+                                    <!--填空-->
+                                    <view class="blank-filling-content" wx:if="{{item.answerMode === 'BlankFilling'}}">
+                                        <analysis-fill
+                                                    analysis = "{{item.solvingProcess}}"
+                                                    difficulty = "{{item.difficultyDegree}}"
+                                                    category = "{{item.category.value}}"
+                                                    area-list="{{item.answerArea.inputAreaList}}"
+                                                    pack-index="{{packIndex}}"
+                                                    question-index="{{index}}"
+                                                    default-value="{{item.answer.pairList}}"
+                                                    student-value="{{item.answerContent.pairList}}"
+                                                    answerCorrect="{{item.answerCorrect}}"
+                                        />
+                                    </view>
+                                    <!--主观-->
+                                    <view class="essay-content" wx:if="{{item.answerMode === 'EssayQuestion'}}">
+                                        <analysis-essay
+                                                    analysis = "{{item.solvingProcess}}"
+                                                    difficulty = "{{item.difficultyDegree}}"
+                                                    category = "{{item.category.value}}"
+                                                    default-value="{{item.answer.content}}"
+                                                    student-value="{{item.answerContent.content}}"
+                                                    answerCorrect="{{item.answerCorrect}}"
+                                                    score="{{item.score}}"
+                                                    pack-index="{{packIndex}}"
+                                                    question-index="{{index}}"
+                                        />
+                                    </view>
+                                    <!--录音-->
+                                    <!-- <view class="recording-content" wx:if="{{item.answerMode === 'luyinQuestion'}}">
+                                        <analysis-recording
+                                                pack-index="{{packIndex}}"
+                                                question-index="{{index}}"
+                                        />
+                                    </view> -->
+                                    <!--判断改错-->
+                                    <view class="judge-content" wx:if="{{item.answerMode === 'JudgementCorrectsMistakes'}}">
+                                        <analysis-correction
+                                                analysis = "{{item.solvingProcess}}"
+                                                difficulty = "{{item.difficultyDegree}}"
+                                                category = "{{item.category.value}}"
+                                                options="{{item.answerArea.optionList}}"
+                                                default-value="{{item.answer}}"
+                                                student-value="{{item.answerContent}}"
+                                                answerStatus="{{item.answerStatus}}"
+                                                answerCorrect="{{item.answerCorrect}}"
+                                                score="{{item.score}}"
+                                                pack-index="{{packIndex}}"
+                                                question-index="{{index}}"
+                                        />
+                                    </view>
+                                </view>
+                            </scroll-view>
+                        </swiper-item>
+                        <swiper-item wx:else item-id="{{packIndex+'-'+index}}">
+                                <view class="composite-question-title" style="height: {{viewHeight}}">
+                                    <scroll-view scroll-y="{{isResizing}}" style="height: 100%" wx:if="{{currentPage <= item.currentPage+1 && currentPage >= item.currentPage-1}}">
+                                        <view class="question-header-box">
+                                            <view class="question-header-content">
+                                                <view class="question-type-title c-475 f-pingfang-j-cg">{{item.questionTypeName}}</view>
+                                                <view class="question-type-total-content">
+                                                    <text class="question-type-select-num c-198">{{index+1}}</text>
+                                                    <text class="question-type-total-num c-bbc">/{{packItem.questions.length}}</text>
+                                                </view>
+                                            </view>
+                                        </view>
+                                        <view class="question-title-wrap">
+                                            <question-title
+                                                    title="{{item.stem}}"
+                                                    analysisState="{{analysisState}}"
+                                            />
+                                        </view>
+                                    </scroll-view>
+                                </view>
+                                <swiper class="subquestion-swiper" style="height: {{contentHeight}}" duration="200" current="{{childCurrentPage}}" bindchange="onChangeChild" bindanimationfinish="swiperFinish" bindtouchstart="handleStart" bindtouchend ="handleEnd">
+                                    <swiper-item wx:for="{{item.subQuestions}}" class="composite-scroll-view"  wx:for-item="subItem" wx:for-index="subIndex" wx:key="questionId">
+                                        <view class="resizing-box" catchtouchmove="resizing" bindtouchend="endResize" bindtouchstart="startResize">
+                                            <view class="resizing-btn"></view>
+                                        </view>
+                                        <scroll-view class="scroll-view-sty" scroll-y="{{isResizing}}" wx:if="{{currentPage === item.currentPage}}">
+                                            <view class="question-header-box">
+                                                <view class="question-header-content composite-header-box">
+                                                    <view class="question-type-title c-475 f-pingfang-j-cg">{{subItem.questionTypeName}}</view>
+                                                    <view class="question-type-total-content">
+                                                        <text class="question-type-select-num c-198">{{subIndex+1}}</text>
+                                                        <text class="question-type-total-num c-bbc">/{{item.subQuestions.length}}</text>
+                                                    </view>
+                                                </view>
+                                            </view>
+                                            <view class="options-content">
+                                                <view class="question-title__">
+                                                    <question-title
+                                                        title="{{subItem.stem}}"
+                                                    />
+                                                </view>
+                                                <!--单选-->
+                                                <view class="composite-options" wx:if="{{subItem.answerMode === 'SingleSelection'}}">
+                                                    <analysis-single
+                                                            analysis = "{{subItem.solvingProcess}}"
+                                                            difficulty = "{{subItem.difficultyDegree}}"
+                                                            category = "{{item.category.value}}"
+                                                            options="{{subItem.answerArea.optionList}}"
+                                                            pack-index="{{packIndex}}"
+                                                            question-index="{{index}}"
+                                                            default-value="{{subItem.answer.id}}"
+                                                            student-value="{{subItem.answerContent.id}}"
+                                                            answerStatus="{{subItem.answerStatus}}"
+                                                            answerCorrect="{{subItem.answerCorrect}}"
+                                                            sub-question-index="{{subIndex}}"
+                                                    />
+                                                </view>
+                                                <!--多选-->
+                                                <view class="composite-options" wx:if="{{subItem.answerMode === 'MultiSelection'}}">
+                                                    <analysis-multiple
+                                                            analysis = "{{subItem.solvingProcess}}"
+                                                            difficulty = "{{subItem.difficultyDegree}}"
+                                                            category = "{{item.category.value}}"
+                                                            options="{{subItem.answerArea.optionList}}"
+                                                            pack-index="{{packIndex}}"
+                                                            question-index="{{index}}"
+                                                            default-value="{{subItem.answer.idList}}"
+                                                            student-value="{{subItem.answerContent.idList}}"
+                                                            answerStatus="{{subItem.answerStatus}}"
+                                                            answerCorrect="{{subItem.answerCorrect}}"
+                                                            sub-question-index="{{subIndex}}"
+                                                    />
+                                                </view>
+                                                <!--判断-->
+                                                <view class="composite-options" wx:if="{{subItem.answerMode === 'Judgement'}}">
+                                                    <analysis-judge
+                                                            analysis = "{{subItem.solvingProcess}}"
+                                                            difficulty = "{{subItem.difficultyDegree}}"
+                                                            category = "{{item.category.value}}"
+                                                            options="{{subItem.answerArea.optionList}}"
+                                                            pack-index="{{packIndex}}"
+                                                            question-index="{{index}}"
+                                                            default-value="{{subItem.answer.id}}"
+                                                            student-value="{{subItem.answerContent.id}}"
+                                                            answerStatus="{{subItem.answerStatus}}"
+                                                            answerCorrect="{{subItem.answerCorrect}}"
+                                                            sub-question-index="{{subIndex}}"
+                                                     />
+                                                </view>
+                                                <!--填空-->
+                                                <view class="composite-options" wx:if="{{subItem.answerMode === 'BlankFilling'}}">
+                                                    <analysis-fill
+                                                            analysis = "{{subItem.solvingProcess}}"
+                                                            difficulty = "{{subItem.difficultyDegree}}"
+                                                            category = "{{item.category.value}}"
+                                                            area-list="{{subItem.answerArea.inputAreaList}}"
+                                                            pack-index="{{packIndex}}"
+                                                            question-index="{{index}}"
+                                                            default-value="{{subItem.answer.pairList}}"
+                                                            student-value="{{subItem.answerContent.pairList}}"
+                                                            answerCorrect="{{subItem.answerCorrect}}"
+                                                            score="{{subItem.score}}"
+                                                            sub-question-index="{{subIndex}}"
+                                                />
+                                                    <blank-filling
+                                                            area-list="{{subItem.answerArea.inputAreaList}}"
+                                                            pack-index="{{packIndex}}"
+                                                            question-index="{{index}}"
+                                                            sub-question-index="{{subIndex}}"
+                                                    />
+                                                </view>
+                                                <!--主观题-->
+                                                <view class="composite-options" wx:if="{{subItem.answerMode === 'EssayQuestion'}}">
+                                                    <analysis-essay
+                                                            analysis = "{{subItem.solvingProcess}}"
+                                                            difficulty = "{{subItem.difficultyDegree}}"
+                                                            category = "{{item.category.value}}"
+                                                            default-value="{{subItem.answer.content}}"
+                                                            student-value="{{subItem.answerContent.content}}"
+                                                            answerCorrect="{{subItem.answerCorrect}}"
+                                                            score="{{subItem.score}}"
+                                                            pack-index="{{packIndex}}"
+                                                            question-index="{{index}}"
+                                                            sub-question-index="{{subIndex}}"
+                                                    />
+                                                </view>
+                                                <!--录音-->
+                                                <!-- <view class="composite-options" wx:if="{{subItem.answerMode === 'luyinQuestion'}}">
+                                                    <analysis-recording
+                                                            pack-index="{{packIndex}}"
+                                                            question-index="{{index}}"
+                                                            sub-question-index="{{subIndex}}"
+                                                    />
+                                                </view> -->
+                                                <!--判断改错-->
+                                                <view class="composite-options" wx:if="{{subItem.answerMode === 'JudgementCorrectsMistakes'}}">
+                                                    <analysis-correction
+                                                            analysis = "{{subItem.solvingProcess}}"
+                                                            difficulty = "{{subItem.difficultyDegree}}"
+                                                            category = "{{item.category.value}}"
+                                                            options="{{subItem.answerArea.optionList}}"
+                                                            default-value="{{subItem.answer}}"
+                                                            student-value="{{subItem.answerContent}}"
+                                                            score="{{subItem.score}}"
+                                                            answerStatus="{{subItem.answerStatus}}"
+                                                            answerCorrect="{{subItem.answerCorrect}}"
+                                                            pack-index="{{packIndex}}"
+                                                            question-index="{{index}}"
+                                                            sub-question-index="{{subIndex}}"
+                                                    />
+                                                </view>
+                                            </view>
+                                        </scroll-view>
+                                    </swiper-item>
+                                </swiper>
+                            </swiper-item>
+                    </block>
+                </block>
+            </swiper>
+            <question-foot
+                bindnextQuestion="nextQuestion"
+                bindprevQuestion="prevQuestion"
+                bindshowAnswerCard="showAnswerCard"
+                analysisState = "{{analysisState}}"
+            />
+        </view>
+        <view class="answer-box">
+            <analysis-card
+                    question-list="{{analysisContent}}"
+                    is-show="{{isShowAnswerCard}}"
+                    bindhideAnswerCard="hideAnswerCard"
+                    bindgoCurrentPage="goCurrentPage"
+            />
+        </view>
+    </view>
+</view>

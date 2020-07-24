@@ -1,0 +1,77 @@
+page{
+  padding:30rpx 32rpx;
+  box-sizing: border-box;
+}
+
+.exam_item{
+  width: 686rpx;
+  height:auto;
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx 10rpx 20rpx 0rpx rgba(38,47,64,0.04);
+  border-radius:16rpx;
+  margin-bottom:24rpx;
+
+  box-sizing:border-box;
+  padding-bottom: 0;
+}
+.exam_title{
+  margin-bottom:30rpx;
+  font-size:32rpx;
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 1.1;
+  height: 40rpx;
+}
+.exam_info{
+  margin-bottom:24rpx;
+  font-size: 24rpx;
+}
+.exam_score{
+  font-size: 24rpx;
+  padding-bottom:30rpx
+}
+
+.controlBtn{
+  margin-right:40rpx
+}
+.score_history{
+  display: block;
+}
+.history_item{
+  font-size:24rpx;
+  height:88rpx;
+  border-bottom: 1rpx solid #E7ECF1;
+  line-height: 88rpx;
+}
+
+.fLeft{
+  float: left;
+}
+.fRight{
+  float:right
+}
+.viewScoreBtn{
+  margin-right: 30rpx;
+  width:100rpx;
+  height:48rpx;
+  background:rgba(255,255,255,0);
+  border-radius:24rpx;
+  font-size: 24rpx;
+  line-height: 48rpx;
+  border:2rpx solid rgba(25,140,255,1);
+  padding:0;
+  text-align: center;
+  margin-top:20rpx
+}
+.exam_score,.history_item{
+  clear: both;
+  overflow:hidden;
+}
+.isShow{
+  display: block;
+}
+.isHide{
+  display: none;
+}

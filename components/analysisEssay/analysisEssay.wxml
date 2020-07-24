@@ -1,0 +1,56 @@
+<view class="essay">
+    <scroll-view class="essay-area-content" scroll-y="true">
+            <wxparser class="analysis-content-question-content"
+            rich-text="{{studentValue}}"
+            />
+    </scroll-view>
+</view>
+
+<view class="analysis-content">
+    <view class="box"></view>   
+    <view class="analysis-content-nav">
+        <!-- <view class="" wx:if="{{answerCorrect}}" style="color:#0AC092;">回答正确</view> -->
+        <view class="score">{{score}}分</view>
+        <!-- <view class="analysis-content-nav-right">
+            试题报错
+        </view> -->
+    </view>
+    <view class="analysis-content-question">
+        <view class="">
+            答案
+        </view>
+        <view class="analysis-content-question-content" style="color:rgba(25,140,255,1);font-weight:500;">
+            <wxparser class="analysis-content-question-content"
+            rich-text="{{defaultValue}}"
+            />
+            <!-- {{defaultValue}} -->
+        </view>
+    </view>  
+    <view class="analysis-content-question">
+        <view class="" >
+            解析
+        </view>
+        <view class="analysis-content-question-content">
+            <wxparser class="parserA"
+            rich-text="{{analysis}}"
+            />
+            <!-- {{analysis}} -->
+        </view>
+    </view>    
+    <view class="analysis-content-question">
+        <view class="" >
+            试题难度
+        </view>
+        <view class="analysis-content-question-content" >
+            {{difficulty}}
+        </view>
+    </view>    
+    <view class="analysis-content-question">
+        <view class="" >
+            知识点
+        </view>
+        <view class="analysis-content-question-content" >
+            {{category}}
+        </view>
+    </view>    
+</view>

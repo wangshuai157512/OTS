@@ -1,0 +1,79 @@
+<!--pages/examList/examList.wxml-->
+<!--pages/examList/examList.wxml-->
+<template name="arrangements">
+    <view class="exam_title  {{item.status==2&&item.showStart?'':'translucent'}}" >{{item.testactivityarrangementname}}</view>
+    <view class="c-929 exam_info exam_time  {{item.status==2&&item.showStart?'':'translucent'}}" >开始时间：<text class="c-475 {{item.status==2?'':'translucent'}}">{{item.starttime}}</text> </view>
+    <view class="c-929 exam_info exam_time  {{item.status==2&&item.showStart?'':'translucent'}}" >截止时间：<text class="c-475 {{item.status==2?'':'translucent'}}">{{item.endtime}} </text> </view>
+    <view class="exam_info">
+      <view class="c-929 {{item.status==2&&item.showStart?'':'translucent'}}" style="display:inline-block;margin-right:36rpx">考试时长：<text class="c-475 {{item.status==2?'':'translucent'}}">{{item.paperTime==0 ? '不限制' : ''+item.paperTime+'分钟'}}</text> </view>
+      <view class="c-929 {{item.status==2&&item.showStart?'':'translucent'}}" style="display:inline-block"> 已做次数：<text class="c-475 {{item.status==2?'':'translucent'}}"><text class="c-198 {{item.status==2?'':'translucent'}}">{{item.alreandycnt}}</text>/{{item.answertime}}</text> </view>
+      <view class="btnStart">
+        <button class="examBtn {{item.status==2&&item.showStart?'':'translucent'}}"  style="display:inline-block;background:#B3BCC7"   wx:if="{{item.status!=2||!item.showStart}}">开始考试</button>
+        <button class="examBtn" hidden="{{currentTab==1||item.status==3 ||!item.showStart?true:false}}"  data-name="{{item.testactivityarrangementname}}" data-count ="{{item.answertime}}" data-time="{{item.paperTime}}" data-id="{{item.testactivityarrangementid}}  "bindtap="enterExam" style="display:inline-block" wx:else>{{item.finalscore?'继续考试' : '开始考试'}}  </button>
+      </view>  
+      
+    </view>
+
+    <view class="c-929 {{item.status==2?'':'translucent'}}" style="white-space:pre-wrap" wx:if="{{item.finalscore}}">成      绩：<text class="c-f44">{{item.finalscore}}</text> </view>
+</template>
+<view >
+
+  <view class="swiper-tab">
+      <!-- <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">全部</view> -->
+      <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">进行中</view>
+      <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">未开始</view>
+      <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">已完成</view>
+
+  </view>
+
+  <swiper  class="swiper-box" current="{{currentTab}}" bindchange="changeFn"  duration="250" style="height:{{winHeight}}px;overflow:scroll;margin-top:30rpx">
+    <swiper-item catchtouchmove='catchTouchMove'>
+      <view class="exam_content">
+         <scroll-view  scroll-y="true" style="height:{{scrollHeight}}px;" bindscrolltolower ="scrollBottom"> 
+          <view class="exam_item" wx:for="{{activityArrangements}}">
+           <template is="arrangements" data="{{item,currentTab}}"></template>
+          </view>
+        </scroll-view>      
+      </view>
+    </swiper-item>
+    <!-- 进行中 -->
+    <swiper-item  catchtouchmove='catchTouchMove'>     
+      <view class="exam_content">
+        <scroll-view scroll-top="88" scroll-y="true" style="height:{{scrollHeight}}px;" bindscrolltolower ="scrollBottom"> 
+          <view class="exam_item" wx:for="{{activityArrangements}}">
+            <template is="arrangements" data="{{item,currentTab}}"></template>
+          </view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+    <!-- 已完成 -->
+    <swiper-item  catchtouchmove='catchTouchMove'>     
+      <view class="exam_content">
+       <scroll-view scroll-top="88" scroll-y="true" style="height:{{scrollHeight}}px;" bindscrolltolower ="scrollBottom"> 
+         <view class="exam_item" wx:for="{{activityArrangements}}">
+           <template is="arrangements" data="{{item,currentTab}}"></template>
+        </view>
+      </scroll-view>
+      </view>
+    </swiper-item>
+    <!-- 未开始 -->
+    <swiper-item  catchtouchmove='catchTouchMove'>
+     <view class="exam_content">
+        <scroll-view scroll-top="88" scroll-y="true" style="height:{{scrollHeight}}px;" bindscrolltolower ="scrollBottom"> 
+          <view class="exam_item" wx:for="{{activityArrangements}}">
+            <template is="arrangements" data="{{item,currentTab}}"></template>
+          </view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+</view>
+<!-- 加载更多 -->
+ <!-- <view class='loadmore' hidden='{{isShowLoadmore}}'>
+  <view class='loading'></view>
+  <view class='loadmore_tips'>正在加载...</view>
+</view> -->
+
+
+

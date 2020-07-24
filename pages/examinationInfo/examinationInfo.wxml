@@ -1,0 +1,33 @@
+<view class="examination-info">
+    <view class="exm-bgc-content">
+        <image src="../../static/img/login_bg.png"></image>
+    </view>
+    <view class="exm-content-box">
+        <view class="exm-content">
+            <view class="exm-info-img">
+                <image src="../../static/img/exm-info.png"></image>
+            </view>
+            <view class="paper-title">
+                {{query.name}}
+            </view>
+            <view class="exm-notice">
+                <view class="exm-notice-item">
+                    <view class="blue-spot-wrap">
+                        <view class="blue-spot"></view>
+                    </view>
+                    <view class="exm-notice-text">每个人可作答<text class="special-color">{{query.count}}</text>次，考试时长<text class="special-color">{{query.time <= 0 ? '不限制' : query.time}}</text><text class="red-color">{{query.time <= 0?'':'分钟'}}</text>。
+                    </view>
+                </view>
+                <view class="exm-notice-item">
+                    <view class="blue-spot-wrap">
+                        <view class="blue-spot"></view>
+                    </view>
+                    <view class="exm-notice-text">如果作答异常中断，请退出小程序后重新进入继续作答。</view>
+                </view>
+            </view>
+            <view class="exm-btn-content">
+                <view class="exm-btn" bindtap="startExam">进入考试</view>
+            </view>
+        </view>
+    </view>
+</view>

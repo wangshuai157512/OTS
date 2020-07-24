@@ -1,0 +1,16 @@
+{
+  "usingComponents": {
+    "analysis-single" : "../../components/analysisSingle/analysisSingle",
+    "analysis-multiple" : "../../components/analysisMultiple/analysisMultiple",
+    "analysis-judge" : "../../components/analysisJudge/analysisJudge",
+    "analysis-fill" : "../../components/analysisFill/analysisFill",
+    "analysis-essay" : "../../components/analysisEssay/analysisEssay",
+    "analysis-recording" : "../../components/analysisRecording/analysisRecording",
+    "analysis-correction" : "../../components/analysisCorrection/analysisCorrection",
+    "analysis-card" : "../../components/analysisCard/analysisCard",
+    "question-foot" : "../../components/questionFoot/questionFoot",
+    "question-title" : "../../components/questionTitle/questionTitle",
+    "wxparser": "plugin://wxparserPlugin/wxparser"
+  },
+  "navigationBarTitleText" : "解析"
+}

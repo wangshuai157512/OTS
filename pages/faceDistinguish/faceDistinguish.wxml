@@ -1,0 +1,36 @@
+<view class="examination-info">
+    <view class="exm-bgc-content">
+        <image src="../../static/img/login_bg.png"></image>
+    </view>
+    <view class="exm-content-box">
+        <view class="exm-content">
+            <view class="face-dis-header">
+                <view class="face-tip-title">诚信考试，从我做起</view>
+                <view class="face-tip-text">为了营造公平公正的考试环境，请先进行验证</view>
+            </view>
+
+            <!-- <view class="exm-face-img">
+                <view class="exm-face-img-box">
+                    <image src="../../static/img/face.png"></image>
+                    <view class="exm-child">
+                        <image src="../../static/img/face-modes.png"></image>
+                    </view>
+                </view>
+                
+            </view> -->
+
+            <!-- <view class="photo-requirement">
+                <view class="photo-requirement-text">拍照要求：</view>
+                <view class="requirement-list">
+                    <view class="requirement-item-text">1.请确保拍照时能清晰的看到您本人的头像</view>
+                    <view class="requirement-item-text">2.请保持光源充足，不要逆光操作；</view>
+                    <view class="requirement-item-text">3.请确保整个脸部进入识别窗口；</view>
+                </view>
+            </view> -->
+
+            <view class="exm-btn-content">
+                <view class="exm-btn" bindtap="startFaceContrast">开始</view>
+            </view>
+        </view>
+    </view>
+</view>

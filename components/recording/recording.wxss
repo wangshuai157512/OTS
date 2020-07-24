@@ -1,0 +1,148 @@
+.my-recording-content {
+    margin-top: 30rpx;
+}
+.recording-box {
+    display: flex;
+}
+.recording-length {
+    width: 550rpx;
+    height: 88rpx;
+    background:rgba(77,136,255,1);
+    border-radius:100rpx 8px 100rpx 100rpx;
+    margin-right: 12rpx;
+    display: flex;
+    flex-flow: row-reverse;
+    padding-right:25rpx ;
+}
+.recording-length-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.recording-length-text {
+    color: #fff;
+}
+.answer-font image {
+    width: 88rpx;
+    height: 88rpx;
+}
+.length-effect {
+    display: flex;
+    align-items: center;
+    margin-left: 18rpx;
+}
+.length-effect view {
+    margin-right: 5rpx;
+}
+.length-effect .short__ {
+    width:3rpx;
+    height:11rpx;
+    background:rgba(255,255,255,1);
+    border-radius:2rpx;
+    opacity:0.7;
+}
+.length-effect .in__ {
+    width:3rpx;
+    height:22rpx;
+    background:rgba(255,255,255,1);
+    border-radius:2rpx;
+}
+.length-effect .long__ {
+    width:3rpx;
+    height:38rpx;
+    background:rgba(255,255,255,1);
+    border-radius:2rpx;
+    opacity:0.4;
+}
+.delete-recording-text {
+    width: 550rpx;
+    margin-top: 12rpx;
+    text-align: right;
+    color: #929CA6;
+    font-size: 24rpx;
+}
+
+.longtap-speak-box {
+    width: 100%;
+    position: fixed;
+    bottom: 61rpx;
+    margin-left: -50rpx;
+}
+.speak-content {
+    display: flex;
+    justify-content: center;
+}
+
+.longtap-speak-text {
+    color: #1966FF;
+    font-size: 28rpx;
+    text-align: center;
+}
+
+
+.cancel-mask-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    width:320rpx;
+    height:320rpx;
+    background:rgba(34,45,68,0.6);
+    border-radius:16rpx;
+    padding-top: 90rpx;
+}
+
+.cancel-effect-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cancel-effect-content view {
+    margin-right: 10rpx;
+}
+.cancel-effect-content .short__ {
+    width:6rpx;
+    height:28rpx;
+    background:rgba(255,255,255,1);
+    border-radius:8px;
+    opacity:0.8;
+}
+.cancel-effect-content .in__ {
+    width:6rpx;
+    height:36rpx;
+    background:rgba(255,255,255,1);
+    border-radius:8px;
+}
+.cancel-effect-content .long__ {
+    width:6rpx;
+    height:63rpx;
+    background:rgba(255,255,255,1);
+    border-radius:8px;
+}
+.cancel-effect-content .center__ {
+    width:6rpx;
+    height:94rpx;
+    background:rgba(255,255,255,0.35);
+    border-radius:8px;
+}
+.move-cancel-recording-text {
+    color: #E7ECF1;
+    font-size: 28rpx;
+    text-align: center;
+    margin-top: 65rpx;
+}
+
+.speak-img-content {
+    width: 120px;
+    height: 120px;
+    background-size: cover;
+    /*background-image: url("http://pic.lanzhiyuan99.cn/image/speak-iconspeak-icon.png");*/
+}
+.speak-img-content.default {
+    background-image: url("https://otsstatic.chinaedu.net/otsstyle/mini/img/speak-icon.png");
+}
+.speak-img-content.speak {
+    background-image: url("https://otsstatic.chinaedu.net/otsstyle/mini/img/long-speak-icon.png");
+}

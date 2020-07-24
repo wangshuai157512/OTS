@@ -1,0 +1,15 @@
+.input-area {
+    display: flex;
+    align-items: center;
+    color: #272E40;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-size:30rpx;
+    background:rgba(247,249,252,1);
+    border-radius: 10rpx;
+    box-sizing: border-box;
+    padding: 24rpx 30rpx;
+    margin-bottom: 20rpx;
+}
+.input-area .input__ {
+    width: 100%;
+}

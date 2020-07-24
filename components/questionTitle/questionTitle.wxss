@@ -1,0 +1,34 @@
+.wxparser-title {
+    color: red;
+    font-size: 34rpx;
+    font-weight: 500;
+    font-family:PingFangSC-Medium,PingFang SC;
+}
+
+.question-title view{
+    line-height: 1.3;
+}
+
+slider {
+    margin: 0;
+}
+.audio-time {
+    color: #738699;
+    font-size: 24rpx;
+}
+
+
+.audio-control-content {
+    display: flex;
+    justify-content: center;
+}
+.control-img {
+    margin: 0 83rpx;
+}
+.control-img__ {
+    width: 60rpx;
+    height: 60rpx;
+}
+.ft {
+    font-weight: 700;
+}

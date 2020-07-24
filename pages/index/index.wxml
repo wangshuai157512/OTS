@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<template name="activeTypes" >
+    <view class="itemTitle">{{item.activityTypeName}}</view>
+    <view class="waitDo">共 <text class="waitNum">{{item.needcnt}}份</text> <text wx:if='{{item.activityTypeName.indexOf("考")!=-1}}'> 考试</text><text wx:else>作业</text>待完成</view>
+</template>
+<view class="container con" >
+ <!-- <button open-type="getUserInfo" bindgetuserinfo='getUserInfo' >授权</button>
+ <button open-type="getPhoneNumber" bindgetphonenumber='getPhone' >授权手机号</button> -->
+
+  <view  bindtap="openList"
+  wx:for="{{activityTypes}}" data-postId="{{item.id}}" data-name="{{item.activityTypeName}}" data-takePhotoInTest="{{item.takePhotoInTest}}" data-isSingleExamination="{{item.isSingleExamination}}" class="{{item.displayImg}} item" >
+   <template is="activeTypes" data="{{item}}"></template>
+   <!-- <view class="itemTitle">{{item.activityTypeName}}</view>
+   <view class="waitDo">共 <text class="waitNum">{{item.needcnt}}份</text> 作业待完成</view> -->
+  </view>
+  <!-- <view class="entranceExam item even" style="background-image:url(../../../../static/img/entranceExam.png)">
+   <view class="itemTitle">入学测试</view>
+   <view class="waitDo">共 <text  class="waitNum" style="background-color:#43BF96">4份</text> 作业待完成</view>
+  </view>
+  <view class="item bigWork " style="background-image:url(../../../../static/img/bigWork.png)">
+    <view class="itemTitle">大作业</view>
+    <view class="waitDo">共 <text  class="waitNum" style="background-color:#F27A24">5份</text> 作业待完成</view>
+  </view>
+  <view class="courseExam item even" style="background-image:url(../../../../static/img/courseExam.png)">
+    <view class="itemTitle">课程考试</view>
+   <view class="waitDo">共 <text  class="waitNum" style="background-color:#6066A6">6份</text> 作业待完成</view>
+  </view>
+  <view class="courseEnd item" style="background-image:url(../../../../static/img/courseEnd.png)">
+    <view class="itemTitle">结课作业</view>
+    <view class="waitDo">共 <text  class="waitNum" style="background-color:#E65C5C">7份</text> 作业待完成</view>
+  </view> -->
+</view>

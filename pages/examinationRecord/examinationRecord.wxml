@@ -1,0 +1,141 @@
+<view class="container">
+  <view class="card examRecord">
+    <view class="numInfo">
+      <view class="recordLeft">
+        <view class="c-475 numTitle">累计完成考试</view>
+        <view class="c-738"><text class="c-198 " style="font-family:Arial-BoldMT,Arial">{{countArrangement}}</text>份</view>
+      </view>
+      <view class="recordRight">
+        <view class="c-475 numTitle">参加考试次数</view>
+        <view class="c-738"><text class="c-198 " style="font-family:Arial-BoldMT,Arial">{{countRecord}}</text>次</view>
+      </view>
+    </view>
+    <button class="viewDetail" bindtap="viweDetail">查看详细记录</button>
+  </view>
+
+  <view class="card answerNum">
+    <view class="tabbar">
+      <view class="cardTitle c-272 fleft" >答题数</view>
+      <view class="fright swiper-tab">
+        <view class="swiper-tab-list fleft {{currentTab==0 ? 'on' : ''}} c-929 week" data-current="0" id="answerNumW" bindtap="swichNav">周</view>
+        <view class="swiper-tab-list fleft {{currentTab==1 ? 'on' : ''}} c-929 month" data-current="1" id="answerNumM" bindtap="swichNav">月</view>
+
+      </view>
+    <swiper  class="swiper-box" >
+      <swiper-item wx:if="{{currentTab==0}}" >
+       <view class="numTotal">
+        <view class="numLeft">
+          <view class="c-198 num">{{answerTotal}}</view>
+          <view class="c-738 numTitle">本周答题累计</view>
+        </view>
+        <view class="numMiddle">
+        <view class="c-198 num">{{answerMaxDate}}</view>
+          <view class="c-738 numTitle">答题数最多</view>
+        </view>
+        <view class="numRight">
+          <view class="c-198 num" >{{answerAve}}道</view>
+          <view class="c-738 numTitle">日平均答题</view>
+        </view>
+       </view>
+       <view class="chart">
+        <ec-canvas id="answerNumChart" canvas-id="answerNumChart" ec="{{ ec }}" force-use-old-canvas="true"></ec-canvas>
+       </view>
+      </swiper-item >
+      <!-- 月 -->
+      <swiper-item  wx:else>
+        <view class="numTotal">
+          <view class="numLeft">
+            <view class="c-198 num">{{answerTotal}}</view>
+            <view class="c-738 numTitle">本月答题累计</view>
+          </view>
+          <view class="numMiddle">
+            <view class="c-198 num">{{answerMaxDate}}</view>
+            <view class="c-738 numTitle">答题数最多</view>
+          </view>
+          <view class="numRight">
+            <view class="c-198 num">{{answerAve}}道</view>
+            <view class="c-738 numTitle">日平均答题</view>
+          </view>
+        </view>
+        <view class="chart">
+          <ec-canvas id="answerNumChart" class="canvasBox" canvas-id="answerNumChart" ec="{{ ec }}" force-use-old-canvas="true"></ec-canvas>
+        </view>
+      </swiper-item>
+    </swiper>
+    </view>
+  </view>
+
+  <view class="card wrongNum">
+    <view class="tabbar">
+      <view class="cardTitle c-272 fleft" >错题数</view>
+      <view class="fright swiper-tab">
+        <view class="swiper-tab-list fleft {{wrongCurrentTab==0 ? 'on' : ''}} c-929 week" data-current="0" id="wrongNumW" bindtap="wrongSwichNav">周</view>
+        <view class="swiper-tab-list fleft {{wrongCurrentTab==1 ? 'on' : ''}} c-929 month" data-current="1" id="wrongNumM" bindtap="wrongSwichNav">月</view>
+      </view>
+      <swiper  class="swiper-box">
+        <swiper-item wx:if="{{wrongCurrentTab==0}}">
+          <view class="numTotal">
+            <view class="numLeft">
+              <view class="c-ff8 num">{{errorTotal}}</view>
+              <view class="c-738 numTitle">本周累计错题</view>
+            </view>
+            <view class="numMiddle">
+              <view class="c-ff8 num">{{errorMaxDate}}</view>
+              <view class="c-738 numTitle">错题数最多</view>
+            </view>
+            <view class="numRight">
+              <view class="c-ff8 num">{{errorAve}}道</view>
+              <view class="c-738 numTitle">日平均错题</view>
+            </view>
+          </view>
+          <view class="chart">
+             <ec-canvas id="wrongNumChart" class="canvasBox" canvas-id="wrongNumChart" ec="{{ ecWrong }}" force-use-old-canvas="true"></ec-canvas>
+          </view>
+        </swiper-item>
+        <!-- 月 -->
+        <swiper-item wx:else>
+          <view class="numTotal">
+            <view class="numLeft">
+              <view class="c-ff8 num">{{errorTotal}}</view>
+              <view class="c-738 numTitle">本月累计错题</view>
+            </view>
+            <view class="numMiddle">
+              <view class="c-ff8 num">{{errorMaxDate}}</view>
+              <view class="c-738 numTitle">错题数最多</view>
+            </view>
+            <view class="numRight">
+              <view class="c-ff8 num">{{errorAve}}道</view>
+              <view class="c-738 numTitle">日平均错题</view>
+            </view>
+          </view>
+          <view class="chart">
+             <ec-canvas id="wrongNumChart" class="canvasBox" canvas-id="wrongNumChart" ec="{{ ecWrong }}"></ec-canvas>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+
+  <view class="card wrongPercent">
+    <view class="tabbar">
+      <view class="cardTitle c-272 fleft" >错题率</view>
+      <view class="fright swiper-tab">
+        <view class="swiper-tab-list fleft {{perCurrentTab==0 ? 'on' : ''}} c-929 week" data-current="0" id="wrongPerW" bindtap="perSwichNav">周</view>
+        <view class="swiper-tab-list fleft {{perCurrentTab==1 ? 'on' : ''}} c-929 month" data-current="1" id="wrongPerM" bindtap="perSwichNav">月</view>
+      </view>
+      <swiper  class="swiper-box">
+        <swiper-item wx:if="{{currentTab==0}}">
+          <view class="chart">
+             <ec-canvas id="wrongPerChart" canvas-id="wrongPerChart" class="canvasBox" ec="{{ ecPer }}" force-use-old-canvas="true" ></ec-canvas>
+          </view>
+        </swiper-item>
+        <!-- 月 -->
+       <swiper-item wx:else>
+          <view class="chart">
+             <ec-canvas id="wrongPerChart" canvas-id="wrongPerChart" class="canvasBox" ec="{{ ecPer }}" force-use-old-canvas="true"></ec-canvas>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+</view>

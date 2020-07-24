@@ -1,0 +1,17 @@
+<view class="question-foot-box">
+    <view class="question-foot-content">
+        <view class="prev-arrow arrow-content" bindtap="prevQuestion">
+            <image src="../../static/img/left-arrow.png"></image>
+        </view>
+        <view class="save-btn" wx:if="{{isShowSaveBtn && !analysisState}}" bindtap="savePaper">
+            <image src="../../static/img/save-icon.png"></image>
+        </view>
+        <view class="time-content" wx:if="{{!analysisState && (paperDate > 0 && timeLimitEnabled)}}">{{dateTime}}</view>
+        <view class="{{!analysisState? 'answer-card-btn' : 'analysis-card'}}" bindtap="showAnswerCard">
+            <image src="../../static/img/answer-card.png"></image>
+        </view>
+        <view class="next-arrow arrow-content" bindtap="nextQuestion">
+            <image src="../../static/img/right-arrow.png"></image>
+        </view>
+    </view>
+</view>

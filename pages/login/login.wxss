@@ -1,0 +1,75 @@
+page{
+  width: 100%;
+  height: 100%;
+}
+.page{
+  width: 100%;
+  height: 100%;
+  background-color: #F7F9FC;
+  position: relative;
+}
+.topbg{
+  width: 100%;
+  height: 30%;
+  background-size: 100% 100%;
+}
+.main{
+  width: 91%;
+  height: 95%;
+  background-color: #FFFFFF;
+  position: absolute;
+  top:2.5%;
+  right: 4.5%;
+  box-shadow:0pt 5pt 15pt 0pt rgba(39,46,64,0.1);
+  border-radius:24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.main .title{
+  height: 25%;
+  color: #272E40;
+  font-size: 48rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main .content{
+  height: 25%;
+  padding: 0 50rpx;
+}
+.main .content .tipText{
+  color: #475059;
+  font-size: 28rpx;
+  line-height: 42rpx;
+}
+.main .content radio{
+  text-align: center;
+}
+.main .content radio.uncheck{
+  color: #929CA6;
+}
+.btn_login{
+  width:85%;
+  height:16%;
+  background:linear-gradient(270deg,rgba(59,141,255,1) 0%,rgba(23,86,255,1) 100%);
+  border-radius:48rpx;
+  text-align: center;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn_login.gray{
+  opacity: 0.5;
+}
+.btnArea{
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

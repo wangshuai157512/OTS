@@ -1,0 +1,14 @@
+<view class="container">
+    <image class="bg" src="../../static/img/login_bg.png"></image>
+
+    <view class="myInfo">
+        <view class="c-272 welcome" ><text class="c-198">{{userName}}</text>，欢迎你</view>
+        <view class="headPic"> </view>
+        <view class='stuInfo'>
+            <view class="stuName c-272"><text class="infotitle c-929">考生姓名：</text>{{userName}}</view>
+            <view class="stucardId c-272"><text class="infotitle c-929">身份证号：</text>{{certificateCode}}</view>
+        </view>
+        <button class="startExam" bindtap="startExam">开始考试</button>
+    </view>
+</view>
+

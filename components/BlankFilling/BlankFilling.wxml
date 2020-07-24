@@ -1,0 +1,11 @@
+<view class="choice-content">
+    <view class="input-area-list">
+        <view class="input-area-item" wx:for="{{areaNewList}}" wx:key="id">
+            <view class="input-area-order">{{item.order}}</view>
+            <view class="input-area">
+                <!--<input type="text" value="{{item.content}}" class="input__" bindinput="change" placeholder="请输入答案" data-id="{{item.id}}" data-index="{{index}}" placeholder-style="font-size:30rpx;color:#BBC5CD;"/>-->
+                <textarea value="{{item.content}}" maxlength="-1" class="input__" bindinput="change" placeholder="请输入答案" data-id="{{item.id}}" data-index="{{index}}" placeholder-style="font-size:30rpx;color:#BBC5CD;"></textarea>
+            </view>
+        </view>
+    </view>
+</view>

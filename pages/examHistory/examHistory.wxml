@@ -1,0 +1,33 @@
+<!--pages/examHistory/examHistory.wxml-->
+<!-- <template name="historyExam">
+   <view class="exam_title .c-272">{{item.name}}</view>
+    <view class="c-929 exam_info exam_time">有效时间：<text class="c-475">{{item.startTime }} ~ {{item.endTime}} </text> </view>
+    <view class="exam_info">
+      <view class="c-929" style="display:inline-block;margin-right:40rpx">考试时长：<text class="c-475">{{item.paperTime}}</text> </view> 
+      <view class="c-929" style="display:inline-block"> 已做次数：<text class="c-475"><text class='c-198'>{{item.data.length}}</text>/ {{item.answerTime==0 ? "不限制" : item.answerTime}}</text> </view> 
+    </view>
+    <view class="exam_score">
+        <view class="c-929 score fLeft">成绩：<text class="{{item.finalScore>59? 'c-0ac':'c-ff5'}}">{{item.finalScore}}</text> </view>
+        <view class="controlBtn fRight " data-ind="{{index}}"  bindtap="viewScoreHistory" wx:if="{{item.data.length>0}}">∧</view>
+
+      </view>
+      <view class="score_history  {{idFlag == index ? 'isShow':'isHide'}} "  >
+        <view class="c-929 history_item" wx:for="{{item.data}}"   wx:for-index="i" wx:for-item="e">
+          <view class="fLeft" style="line-height:88rpx">
+          第{{item.data.length-i}}次成绩：<text class="{{e.score>59? 'c-0ac':'c-ff5'}}">{{e.score}}</text> 
+          </view>  
+          <button class="c-198 viewScoreBtn fRight">查看</button>
+        </view>         
+      </view>
+</template> -->
+
+  <view class="exam_content">
+    <view class="exam_item"  wx:for = "{{arrangements}}" >
+    <historyExam  bindtap="viewScoreHistory"  options = "{{item}}" index="{{index}}"
+
+    />
+      <!-- <template is="historyExam" data="{{item,index,idFlag}}"></template> -->
+    </view>
+ 
+  </view>
+

@@ -1,0 +1,9 @@
+<view class="choice-content">
+    <view class="choice-item choice-item_{{item.state}}" data-index="{{index}}"
+          wx:for="{{optionList}}" wx:key="id" bindtap="onChosen">
+        <view class="choice-item__order">
+            <image src="{{item.chosen?item.imgContent.img_s:item.imgContent.img_n}}"></image>
+        </view>
+        <text class="choice-item__text">{{item.content}}</text>
+    </view>
+</view>
